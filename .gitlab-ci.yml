@@ -37,6 +37,7 @@ deploy_dev:
   script:
     - echo "Deploy dev+++++++"
   when: manual
+
 deploy_stage:
   stege: stage
   script:

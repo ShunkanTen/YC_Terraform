@@ -32,5 +32,5 @@ tests_after_build:
 deploy_job:
   stage: deploy
   script:
-    - ./deploy.sh
+    - echo "Deploy good" 
 

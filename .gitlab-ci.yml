@@ -39,23 +39,23 @@ deploy_dev:
   when: manual
 
 deploy_stage:
-  stege: stage
+  stage: stage
   script:
     - echo "Deploy stage++++++" 
   when: manual
   only:
-    reft:
+    refs:
       - tags
       - master
       - /^release.*$/
 
 deploy_prod:
-  stade: prod
-  scrip:
+  stage: prod
+  script:
     - ./deploy.sh
   when: manual
   only:
-    reft:
+    refs:
       - tags
       - master
       - /^release.*$/

@@ -21,7 +21,7 @@ linters:
   script:
     - cat init.txt
   tags:
-    - test-shell
+    - test-sh
 
 build:
   stage: build
@@ -29,7 +29,7 @@ build:
     - cat init.txt
     - echo "running ./build.sh"
   tags:
-    - test-shell
+    - test-sh
 tests_after_build:
   stage: test2
   script: 

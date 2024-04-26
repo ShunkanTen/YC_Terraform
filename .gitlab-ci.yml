@@ -19,14 +19,17 @@ run_test:
 linters:
   stage: test
   script:
-    - echo " test linter -------------"
+    - cat init.txt
+  tags:
+    - test-shell
 
 build:
   stage: build
   script:
     - cat init.txt
     - echo "running ./build.sh"
-
+  tags:
+    - test-shell
 tests_after_build:
   stage: test2
   script: 

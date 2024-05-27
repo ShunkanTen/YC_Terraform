@@ -28,3 +28,15 @@ variable "node_labels_env" {
   type        = string
   description = "description"
 }
+
+variable "sa_kube" {
+  type = string
+}
+
+variable "folder_id" {
+  type = string
+}
+
+variable "cloud_id" {
+  type = string
+}

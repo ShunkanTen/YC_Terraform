@@ -4,3 +4,6 @@ auto_scale_max = 8
 auto_scale_initial = 2
 node_labels_role = "devops-test"
 node_labels_env = "devops"
+sa_kube = "vadim1"
+folder_id = "b1gnrcrosck9tv18fpno"
+cloud_id = "b1ge9r1738nfvevpi3o7" 

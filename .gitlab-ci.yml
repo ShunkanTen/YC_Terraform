@@ -1,64 +1,40 @@
+image:
+  name: registry.gitlab.com/gitlab-org/gitlab-build-images:terraform
+  entrypoint:
+    - "/usr/bin/env"
+    - "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+cache:
+  paths:
+    - .terraform
+
+variables:
+  YC_SERVICE_ACCOUNT_KEY_FILE: /tmp/vadimg.json
+
+before_script:
+  - terraform init
+  - tcho $YC_KEY > /tmp/vadimg.json
+
 stages:
-  - test
-  - build
-  - test2
-  - dev
-  - stage
-  - prod
+  - validate
+  - plan
+  - apply
 
-install_env:
-  stage: test
+validate:
+  stage: validate
   script:
-    - echo " test 1 -------------"
+    - terraform validate
 
-run_test:
-  stage: test
+plan:
+  stae: plan
   script:
-    - echo " test 2 --------------"
+    - terraform plan -out="planfile"
+  artifacts:
+    paths:
+      - planfile
 
-linters:
-  stage: test
+apply:
+  stage: apply
   script:
-    - cat init.txt
-  tags:
-    - test-deploy
-
-build:
-  stage: build
-  script:
-    - cat init.txt
-    - echo "running ./build.sh"
-  tags:
-    - test-deploy
-tests_after_build:
-  stage: test2
-  script: 
-    - echo "test after build-----------"
-
-deploy_dev:
-  stage: dev
-  script:
-    - echo "Deploy dev+++++++"
+    - terraform apply -auto-approve "planfile"
   when: manual
-
-deploy_stage:
-  stage: stage
-  script:
-    - echo "Deploy stage++++++" 
-  when: manual
-  only:
-    refs:
-      - tags
-      - master
-      - /^release.*$/
-
-deploy_prod:
-  stage: prod
-  script:
-    - ./deploy.sh
-  when: manual
-  only:
-    refs:
-      - tags
-      - master
-      - /^release.*$/

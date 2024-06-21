@@ -21,14 +21,14 @@ terraform {
     endpoint = "storage.yandexcloud.net"
     region = "ru-central1"
 
-    bucket = "bassic-backend"
+    bucket = "shunkan"
     key = "state"
 
     skip_region_validation = true
     skip_credentials_validation = true
 
-    dynamodb_endpoint = "grpcs://ydb.serverless.yandexcloud.net:2135/?database=/ru-central1/b1ge9r1738nfvevpi3o7/etno7hq4b7a59bg6dei5"
-    dynamodb_table = "bassic-backend"
+    dynamodb_endpoint = "https://docapi.serverless.yandexcloud.net/ru-central1/b1ge9r1738nfvevpi3o7/etne40mb3oc7vbainjno"
+    dynamodb_table = "shunkan"
     }
     
 }

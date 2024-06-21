@@ -26,7 +26,7 @@ validate:
     - terraform validate
 
 plan:
-  stae: plan
+  stage: plan
   script:
     - terraform plan -out="planfile"
   artifacts:
